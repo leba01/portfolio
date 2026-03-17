@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  technologies: string[];
+  slug: string;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+const { title, description, technologies, slug, githubUrl, liveUrl } = Astro.props;
+---
+
+<article class="group border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
+  <a href={`/projects/${slug}`} class="block">
+    <h3 class="text-lg font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+      {title}
+    </h3>
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>
+  </a>
+  <div class="mt-4 flex flex-wrap gap-2">
+    {technologies.map((tech) => (
+      <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-md text-gray-700 dark:text-gray-300">
+        {tech}
+      </span>
+    ))}
+  </div>
+  {(githubUrl || liveUrl) && (
+    <div class="mt-4 flex gap-4 text-sm">
+      {githubUrl && (
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
+          Source
+        </a>
+      )}
+      {liveUrl && (
+        <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
+          Live
+        </a>
+      )}
+    </div>
+  )}
+</article>
