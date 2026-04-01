@@ -1,1 +1,51 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Warm off-whites */
+  --color-surface: #f4f1ec;
+  --color-surface-raised: #eae6df;
+
+  /* Warm charcoals */
+  --color-ink: #1c1b19;
+  --color-ink-secondary: #6e6b65;
+  --color-ink-tertiary: #9e9a93;
+
+  /* Accent — sage green */
+  --color-accent: #6b8f71;
+  --color-accent-muted: #8aab8f;
+
+  /* Borders */
+  --color-rule: #d6d2cb;
+  --color-rule-faint: #e4e0da;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Project rows */
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-rule-faint);
+  transition: border-color 0.2s ease;
+}
+
+.project-row:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+.project-row:last-child {
+  border-bottom: none;
+}

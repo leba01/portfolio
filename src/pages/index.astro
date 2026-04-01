@@ -1,65 +1,52 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 
 const allProjects = await getCollection('projects');
-const featuredProjects = allProjects
-  .filter((p) => p.data.featured)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const otherProjects = allProjects
-  .filter((p) => !p.data.featured)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const projects = allProjects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Base title="Lucas Brennan-Almaraz">
-  <!-- Hero -->
-  <section class="py-12">
-    <h1 class="text-4xl font-bold tracking-tight">Lucas Brennan-Almaraz</h1>
-    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-      Software engineer building tools for the web.
+  <header class="mb-20">
+    <h1 class="text-4xl md:text-5xl tracking-tight leading-tight">Lucas Brennan-Almaraz</h1>
+    <p class="mt-4 text-base" style="color: var(--color-ink-secondary);">
+      Stanford CS. Building AI infrastructure for biology at Arc Institute.
     </p>
+    <nav class="mt-5 flex gap-6 text-sm" style="color: var(--color-ink-tertiary);">
+      <a href="https://github.com/leba01" target="_blank" rel="noopener noreferrer" class="hover:text-[--color-accent] transition-colors">GitHub ↗</a>
+      <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="hover:text-[--color-accent] transition-colors">LinkedIn ↗</a>
+      <a href="mailto:lucas@leba.sh" class="hover:text-[--color-accent] transition-colors">Email ↗</a>
+    </nav>
+  </header>
+
+  <hr class="border-t border-[--color-rule] mb-10" />
+
+  <section>
+    {projects.map((project) => (
+      <div class="project-row">
+        <div class="flex items-baseline gap-3">
+          <a href={`/projects/${project.id}`} class="text-base font-normal hover:text-[--color-accent] transition-colors" style="font-family: Georgia, 'Times New Roman', serif;">
+            {project.data.title}
+          </a>
+          {project.data.githubUrl && (
+            <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-xs hover:text-[--color-accent] transition-colors" style="color: var(--color-ink-tertiary);">
+              GitHub ↗
+            </a>
+          )}
+        </div>
+        <p class="text-sm text-right shrink-0 max-w-[50%] hidden sm:block" style="color: var(--color-ink-tertiary);">
+          {project.data.description}
+        </p>
+      </div>
+    ))}
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="py-12">
-    <h2 class="text-2xl font-semibold mb-6">Projects</h2>
-    <div class="grid gap-4">
-      {featuredProjects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          description={project.data.description}
-          technologies={project.data.technologies}
-          slug={project.id}
-          githubUrl={project.data.githubUrl}
-          liveUrl={project.data.liveUrl}
-        />
-      ))}
-      {otherProjects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          description={project.data.description}
-          technologies={project.data.technologies}
-          slug={project.id}
-          githubUrl={project.data.githubUrl}
-          liveUrl={project.data.liveUrl}
-        />
-      ))}
+  <footer class="mt-24 pt-8 border-t border-[--color-rule-faint]">
+    <p class="text-xs tracking-wide uppercase mb-4" style="color: var(--color-ink-tertiary);">Background</p>
+    <div class="flex flex-col gap-1.5 text-sm" style="color: var(--color-ink-tertiary);">
+      <p>Arc Institute <span class="mx-1.5">·</span> Research Assistant <span class="text-xs italic">(current)</span></p>
+      <p>Nuha <span class="mx-1.5">·</span> Member of Technical Staff</p>
+      <p>Boston Consulting Group <span class="mx-1.5">·</span> Summer Associate</p>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-12">
-    <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <p class="text-gray-600 dark:text-gray-400">
-      Reach me at
-      <a href="mailto:lucas@leba.sh" class="text-blue-600 dark:text-blue-400 hover:underline">
-        lucas@leba.sh
-      </a>
-      or find me on
-      <a href="https://github.com/leba01" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
-        GitHub
-      </a>.
-    </p>
-  </section>
+  </footer>
 </Base>
