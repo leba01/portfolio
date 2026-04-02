@@ -10,3 +10,5 @@ date: 2026-02-15
 StealthFetch is a Python library that fetches any web page and returns clean, LLM-ready markdown. It handles anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai) by auto-escalating from HTTP to a stealth browser.
 
 Built for AI pipelines where you need reliable web content extraction without worrying about bot detection.
+
+Unlike most scraping tools, StealthFetch validates URLs twice — before the request and after redirects resolve — to prevent SSRF attacks. This is especially important as an MCP server, where URLs come from LLMs that can be prompt-injected.
