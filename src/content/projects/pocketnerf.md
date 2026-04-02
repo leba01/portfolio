@@ -2,7 +2,7 @@
 title: PocketNeRF
 description: Phone-to-3D indoor reconstruction pipeline.
 technologies: [Python, PyTorch]
-githubUrl: https://github.com/aaronkjin/pocketnerf
+githubUrl: https://github.com/leba01/pocketnerf
 featured: true
 date: 2025-06-01
 ---
