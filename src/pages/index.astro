@@ -4,6 +4,9 @@ import Base from '../layouts/Base.astro';
 
 const allProjects = await getCollection('projects');
 const projects = allProjects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allPublications = await getCollection('publications');
+const publications = allPublications.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Base title="Lucas E. Brennan-Almaraz">
@@ -21,7 +24,29 @@ const projects = allProjects.sort((a, b) => b.data.date.getTime() - a.data.date.
 
   <hr class="border-t border-[--color-rule] mb-10" />
 
+  {publications.length > 0 && (
+    <section class="mb-16">
+      <p class="text-xs tracking-wide uppercase mb-4" style="color: var(--color-ink-tertiary);">Publications</p>
+      {publications.map((publication) => (
+        <div class="project-row">
+          <div class="min-w-0">
+            <div class="flex items-baseline gap-3">
+              <a href={publication.data.paperUrl} target="_blank" rel="noopener noreferrer" class="text-base font-normal hover:text-[--color-accent] transition-colors" style="font-family: Georgia, 'Times New Roman', serif;">
+                {publication.data.title}
+              </a>
+              <a href={publication.data.paperUrl} target="_blank" rel="noopener noreferrer" class="text-xs shrink-0 hover:text-[--color-accent] transition-colors" style="color: var(--color-ink-tertiary);">
+                {publication.data.venue} ↗
+              </a>
+            </div>
+            <p class="mt-1 text-sm" style="color: var(--color-ink-tertiary);" set:html={publication.data.authors} />
+          </div>
+        </div>
+      ))}
+    </section>
+  )}
+
   <section>
+    <p class="text-xs tracking-wide uppercase mb-4" style="color: var(--color-ink-tertiary);">Projects</p>
     {projects.map((project) => (
       <div class="project-row">
         <div class="flex items-baseline gap-3">
