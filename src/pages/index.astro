@@ -40,7 +40,7 @@ const publications = allPublications.sort((a, b) => b.data.date.getTime() - a.da
             </div>
             <p class="mt-1 text-sm" style="color: var(--color-ink-tertiary);" set:html={publication.data.authors} />
             {publication.data.description && (
-              <p class="mt-2 text-sm leading-relaxed max-w-2xl" style="color: var(--color-ink-secondary);">
+              <p class="mt-2 text-sm leading-relaxed max-w-4xl" style="color: var(--color-ink-secondary);">
                 {publication.data.description}
               </p>
             )}
