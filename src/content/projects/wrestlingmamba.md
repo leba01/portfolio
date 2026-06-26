@@ -2,7 +2,7 @@
 title: WrestlingMamba
 description: First successful integration of LoRA fine-tuning with the Mamba architecture.
 technologies: [Python, PyTorch, HuggingFace Transformers]
-githubUrl: https://github.com/sarveshrbabu/wrestlingMAMBA
+githubUrl: https://github.com/leba01/wrestlingMAMBA
 featured: true
 date: 2025-03-01
 ---
