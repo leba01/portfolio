@@ -1,6 +1,6 @@
 ---
 title: PocketNeRF
-description: "Highlighted project, Stanford CS231n Spring 2025. Phone-to-3D indoor reconstruction."
+description: "Phone-to-3D indoor reconstruction from a handful of iPhone photos, compressed to sub-8-bit for mobile deployment. Highlighted on the CS231n Spring 2025 reports page."
 technologies: [Python, PyTorch]
 githubUrl: https://github.com/leba01/pocketnerf
 featured: true

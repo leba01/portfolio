@@ -1,6 +1,6 @@
 ---
 title: TurnOne
-description: Low-rank payoff structure in 155K competitive Pokémon battles.
+description: "Experts play nothing like Nash yet score like it — the payoff matrix is effectively rank-3, so convention is free. Offline RL just finds a different convention, not a better strategy."
 technologies: [Python, PyTorch]
 githubUrl: https://github.com/leba01/turnone
 featured: true
