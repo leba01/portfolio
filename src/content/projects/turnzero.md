@@ -1,6 +1,6 @@
 ---
 title: TurnZero
-description: Sequential prediction on 382K Pokémon VGC tournament replays.
+description: "Players switch strategy far more after a loss than a win — yet that post-loss signal actively misleads prediction. Sequential transformers over 382K VGC replays."
 technologies: [Python, PyTorch, ONNX]
 githubUrl: https://github.com/leba01/turnzero
 liveUrl: https://turnzero.vercel.app
