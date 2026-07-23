@@ -13,7 +13,7 @@ const publications = allPublications.sort((a, b) => b.data.date.getTime() - a.da
   <header class="mb-20">
     <h1 class="text-4xl md:text-5xl tracking-tight leading-tight">Lucas E. Brennan-Almaraz</h1>
     <p class="mt-4 text-base" style="color: var(--color-ink-secondary);">
-      Stanford CS. Building AI infrastructure for biology at Arc Institute.
+      Stanford CS. Shipping RL environments at Ambitus. Prev at Arc Institute.
     </p>
     <nav class="mt-5 flex gap-6 text-sm" style="color: var(--color-ink-tertiary);">
       <a href="https://github.com/leba01" target="_blank" rel="noopener noreferrer" class="hover:text-[--color-accent] transition-colors">GitHub ↗</a>
@@ -30,13 +30,18 @@ const publications = allPublications.sort((a, b) => b.data.date.getTime() - a.da
       {publications.map((publication) => (
         <div class="project-row">
           <div class="min-w-0">
-            <div class="flex items-baseline gap-3">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <a href={publication.data.paperUrl} target="_blank" rel="noopener noreferrer" class="text-base font-normal hover:text-[--color-accent] transition-colors" style="font-family: Georgia, 'Times New Roman', serif;">
                 {publication.data.title}
               </a>
               <a href={publication.data.paperUrl} target="_blank" rel="noopener noreferrer" class="text-xs shrink-0 hover:text-[--color-accent] transition-colors" style="color: var(--color-ink-tertiary);">
                 {publication.data.venue} ↗
               </a>
+              {publication.data.siteUrl && (
+                <a href={publication.data.siteUrl} target="_blank" rel="noopener noreferrer" class="text-xs shrink-0 hover:text-[--color-accent] transition-colors" style="color: var(--color-ink-tertiary);">
+                  {new URL(publication.data.siteUrl).hostname} ↗
+                </a>
+              )}
             </div>
             <p class="mt-1 text-sm" style="color: var(--color-ink-tertiary);" set:html={publication.data.authors} />
             {publication.data.description && (
@@ -74,7 +79,8 @@ const publications = allPublications.sort((a, b) => b.data.date.getTime() - a.da
   <footer class="mt-24 pt-8 border-t border-[--color-rule-faint]">
     <p class="text-xs tracking-wide uppercase mb-4" style="color: var(--color-ink-tertiary);">Background</p>
     <div class="flex flex-col gap-1.5 text-sm" style="color: var(--color-ink-tertiary);">
-      <p>Arc Institute <span class="mx-1.5">·</span> Research Assistant <span class="text-xs italic">(current)</span></p>
+      <p>Ambitus <span class="mx-1.5">·</span> Founding Engineer <span class="text-xs italic">(current)</span></p>
+      <p>Arc Institute <span class="mx-1.5">·</span> Research Assistant, Hie Lab</p>
       <p>Nuha <span class="mx-1.5">·</span> Member of Technical Staff</p>
       <p>Boston Consulting Group <span class="mx-1.5">·</span> Summer Associate</p>
     </div>
