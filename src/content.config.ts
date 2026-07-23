@@ -23,6 +23,7 @@ const publications = defineCollection({
     authors: z.string(),
     venue: z.string(),
     paperUrl: z.string().url(),
+    siteUrl: z.string().url().optional(),
     description: z.string().optional(),
     featured: z.boolean().default(false),
     date: z.coerce.date(),
